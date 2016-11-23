@@ -20,6 +20,6 @@ node {
    stage 'Archive'
       step([$class: 'ArtifactArchiver', artifacts: '**/build/*.war', fingerprint: true])
    //next job
-   stage 'test-downstream'
+   stage 'Next-job'
       def job = build job: 'echo-test'
 }
