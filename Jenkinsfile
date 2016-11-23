@@ -16,7 +16,7 @@ node {
    // Copy war file to dockerfile location to deploy
    stage 'Copy'
    		sh './copy.sh'
-   //fingerprint		
+   // set fingerprint for war file
    stage 'Archive'
       step([$class: 'ArtifactArchiver', artifacts: '**/build/*.war', fingerprint: true])
 }
