@@ -13,4 +13,7 @@ node {
    stage 'Build'
    // Run the maven build
    sh 'ant'
+   //fingerprint		
+   stage 'Archive'
+      step([$class: 'ArtifactArchiver', artifacts: '**/build/*.war', fingerprint: true])
 }
