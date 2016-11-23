@@ -19,4 +19,7 @@ node {
    // set fingerprint for war file
    stage 'Archive'
       step([$class: 'ArtifactArchiver', artifacts: '**/build/*.war', fingerprint: true])
+   //next job
+   stage 'test-downstream'
+      def job = build job: 'echo-test'
 }
