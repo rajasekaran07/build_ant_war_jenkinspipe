@@ -13,4 +13,9 @@ node {
    stage 'Build'
    // Run the maven build
    sh 'ant'
+   // set fingerprint for war file
+   stage 'Archive'
+      step([$class: 'ArtifactArchiver', artifacts: '**/build/*.war', fingerprint: true])
+    stage 'Next-job'
+      def job = build job: 'ssh_copy'
 }
